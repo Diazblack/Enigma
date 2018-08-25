@@ -72,4 +72,20 @@ class EnigmaTest < Minitest::Test
   end
 
 
+    def test_if_it_can_todays_date
+      e = Enigma.new
+
+      assert_equal 25-08-2018, e.Date.today
+    end
+
+    def test_if_it_can_encrypt_one_digit
+      e = Enigma.new
+
+      assert_equal , e.encrypt(my_message, "1",)
+    end
+
+
+
+
+
 end
