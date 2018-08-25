@@ -58,6 +58,7 @@ attr_reader :dictionary,
     @offset     = []
   end
 
+
   def get_key(string)
     4.times do |number|
       @key << (string[number] + string[number + 1]).to_i
@@ -66,12 +67,17 @@ attr_reader :dictionary,
   end
 
 
-
   def get_offset(key, date)
     4.times do |number|
       @offset << key[number] + date[number]
     end
     @offset
   end
+
+
+  def get_random
+    rand(99999)
+  end
+
 
 end

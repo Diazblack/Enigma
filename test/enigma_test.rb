@@ -82,5 +82,12 @@ class EnigmaTest < Minitest::Test
 
   end
 
+  def test_if_it_can_a_random_number
+      e = Enigma.new
+
+      random = e.get_random
+      #there's a tiny possibility that random_test might fail
+      refute_equal random, e.get_random
+  end
 
 end
