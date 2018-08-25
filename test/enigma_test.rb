@@ -63,16 +63,24 @@ class EnigmaTest < Minitest::Test
       ","
       ]
     assert_equal expected, e.dictionary
+    assert_equal [], e.key
+    assert_equal [], e.offset
   end
 
   def test_if_it_can_get_a_key
       e = Enigma.new
-      
+
       assert_equal [12, 23, 34, 45],
-      e.rotate_key("12345")
+      e.get_key("12345")
   end
 
+  def test_if_it_can_get_offset
+      e = Enigma.new
 
+      assert_equal [21,24,36,49],
+      e.get_offset([12, 23, 34, 45], [9, 1, 2, 4])
+
+  end
 
 
 end

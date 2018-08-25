@@ -5,7 +5,9 @@ SimpleCov.start
 require 'date'
 
 class Enigma
-attr_reader :dictionary
+attr_reader :dictionary,
+            :key,
+            :offset
 
 
 
@@ -52,16 +54,24 @@ attr_reader :dictionary
      ".",
      ","
     ]
-
-
+    @key        = []
+    @offset     = []
   end
 
-  def rotate_key(string)
-    keys = []
+  def get_key(string)
     4.times do |number|
-      keys << (string[number] + string[number + 1]).to_i
+      @key << (string[number] + string[number + 1]).to_i
    end
-   keys
+   @key
+  end
+
+
+
+  def get_offset(key, date)
+    4.times do |number|
+      @offset << key[number] + date[number]
+    end
+    @offset
   end
 
 end
