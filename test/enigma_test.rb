@@ -8,7 +8,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/enigma'
 require 'date'
-
+require 'pry'
 class EnigmaTest < Minitest::Test
 
   def test_if_it_exists
@@ -65,25 +65,12 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, e.dictionary
   end
 
-  def test_if_key_is_empty
-    e = Enigma.new
-
-    assert_equal nil, e.key
+  def test_if_it_can_get_a_key
+      e = Enigma.new
+      
+      assert_equal [12, 23, 34, 45],
+      e.rotate_key("12345")
   end
-
-
-    def test_if_it_can_todays_date
-      e = Enigma.new
-
-      assert_equal 25-08-2018, e.Date.today
-    end
-
-    def test_if_it_can_encrypt_one_digit
-      e = Enigma.new
-
-      assert_equal , e.encrypt(my_message, "1",)
-    end
-
 
 
 

@@ -2,11 +2,12 @@ require 'simplecov'
 SimpleCov.start
 
 # Previous content of test helper now starts here
-# require 'date'
+require 'date'
 
 class Enigma
-attr_reader :dictionary,
-            :key
+attr_reader :dictionary
+
+
 
   def initialize
     @dictionary =[
@@ -51,9 +52,16 @@ attr_reader :dictionary,
      ".",
      ","
     ]
-    @key        = key
+
+
   end
 
-
+  def rotate_key(string)
+    keys = []
+    4.times do |number|
+      keys << (string[number] + string[number + 1]).to_i
+   end
+   keys
+  end
 
 end
