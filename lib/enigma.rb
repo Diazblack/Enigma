@@ -5,7 +5,6 @@ SimpleCov.start
 
 class Enigma
 attr_reader :dictionary,
-            :key,
             :offset
 
   def initialize
@@ -51,19 +50,13 @@ attr_reader :dictionary,
      ".",
      ","
     ]
-    @key        = []
     @offset     = []
   end
 
-  def get_key(string)
+  def get_offset(string, date)
+    key = []
     4.times do |number|
-      @key << (string[number] + string[number + 1]).to_i
-   end
-   @key
-  end
-
-  def get_offset(key, date)
-    4.times do |number|
+      key << (string[number] + string[number + 1]).to_i
       @offset << key[number] + date[number]
     end
     @offset
