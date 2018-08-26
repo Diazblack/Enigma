@@ -77,11 +77,10 @@ attr_reader :dictionary,
     date_array = date.strftime("%m/%d/%Y").split("/")
       date_array.map do |date|
         if date.length > 2
-          date[2..3]
+          date[-2..-1]
         else
           date
         end
       end.join.to_i
   end
-
 end

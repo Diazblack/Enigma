@@ -96,4 +96,5 @@ class EnigmaTest < Minitest::Test
 
     assert_equal 82618, e.get_date(date)
   end
+
 end
