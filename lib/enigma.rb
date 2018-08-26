@@ -74,6 +74,14 @@ attr_reader :dictionary,
   end
 
   def get_date(date)
-    date.strftime("%m/%d/%Y").split("/")
+    date_array = date.strftime("%m/%d/%Y").split("/")
+      date_array.map do |date|
+        if date.length > 2
+          (date.to_i)-2000
+        else
+          date
+        end
+      end.join.to_i
   end
+
 end

@@ -90,11 +90,10 @@ class EnigmaTest < Minitest::Test
       refute_equal random, e.get_random
   end
 
-  def test_if_it_can_get_a_date_today_as_string
+  def test_if_it_can_get_a_date_today
     e = Enigma.new
     date = Date.today
 
-    assert_equal ["08", "25", "2018"], e.get_date(date)
-
+    assert_equal 82618, e.get_date(date)
   end
 end
