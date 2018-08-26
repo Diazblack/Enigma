@@ -6,7 +6,7 @@ SimpleCov.start
 
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/enigma'
+require './lib/enigma.rb'
 require 'date'
 require 'pry'
 class EnigmaTest < Minitest::Test
@@ -90,4 +90,11 @@ class EnigmaTest < Minitest::Test
       refute_equal random, e.get_random
   end
 
+  def test_if_it_can_get_a_date_today_as_string
+    e = Enigma.new
+    date = Date.today
+
+    assert_equal ["08", "25", "2018"], e.get_date(date)
+
+  end
 end

@@ -2,14 +2,11 @@ require 'simplecov'
 SimpleCov.start
 
 # Previous content of test helper now starts here
-require 'date'
 
 class Enigma
 attr_reader :dictionary,
             :key,
             :offset
-
-
 
   def initialize
     @dictionary =[
@@ -58,14 +55,12 @@ attr_reader :dictionary,
     @offset     = []
   end
 
-
   def get_key(string)
     4.times do |number|
       @key << (string[number] + string[number + 1]).to_i
    end
    @key
   end
-
 
   def get_offset(key, date)
     4.times do |number|
@@ -74,10 +69,11 @@ attr_reader :dictionary,
     @offset
   end
 
-
   def get_random
     rand(99999)
   end
 
-
+  def get_date(date)
+    date.strftime("%m/%d/%Y").split("/")
+  end
 end
