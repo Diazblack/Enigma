@@ -6,7 +6,7 @@ SimpleCov.start
 
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/enigma'
+require './lib/enigma.rb'
 require 'date'
 require 'pry'
 class EnigmaTest < Minitest::Test
@@ -88,6 +88,13 @@ class EnigmaTest < Minitest::Test
       random = e.get_random
       #there's a tiny possibility that random_test might fail
       refute_equal random, e.get_random
+  end
+
+  def test_if_it_can_get_a_date_today
+    e = Enigma.new
+    date = Date.today
+
+    assert_equal 82618, e.get_date(date)
   end
 
 end
