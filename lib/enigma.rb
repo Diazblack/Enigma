@@ -5,7 +5,6 @@ SimpleCov.start
 
 class Enigma
 attr_reader :dictionary,
-            :key,
             :offset
 
   def initialize
@@ -46,24 +45,17 @@ attr_reader :dictionary,
      "7",
      "8",
      "9",
-     "0",
      " ",
      ".",
      ","
     ]
-    @key        = []
     @offset     = []
   end
 
-  def get_key(string)
+  def get_rotation(string, date)
+    key = []
     4.times do |number|
-      @key << (string[number] + string[number + 1]).to_i
-   end
-   @key
-  end
-
-  def get_offset(key, date)
-    4.times do |number|
+      key << (string[number] + string[number + 1]).to_i
       @offset << key[number] + date[number]
     end
     @offset
@@ -73,8 +65,13 @@ attr_reader :dictionary,
     rand(99999)
   end
 
+  def get_last_numbers(date)
+    last_numbers = (get_date(date) ** 2).to_s
+    last_numbers[-4..-1].to_i
+  end
+
   def get_date(date)
-    date_array = date.strftime("%m/%d/%Y").split("/")
+    date_array = date.strftime("%d/%m/%Y").split("/")
       date_array.map do |date|
         if date.length > 2
           date[-2..-1]

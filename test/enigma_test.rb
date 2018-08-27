@@ -57,44 +57,43 @@ class EnigmaTest < Minitest::Test
       "7",
       "8",
       "9",
-      "0",
       " ",
       ".",
       ","
       ]
     assert_equal expected, e.dictionary
-    assert_equal [], e.key
     assert_equal [], e.offset
   end
 
-  def test_if_it_can_get_a_key
-      e = Enigma.new
+  def test_if_it_can_get_rotation_with_string_and_date
+    e = Enigma.new
 
-      assert_equal [12, 23, 34, 45],
-      e.get_key("12345")
-  end
-
-  def test_if_it_can_get_offset
-      e = Enigma.new
-
-      assert_equal [21,24,36,49],
-      e.get_offset([12, 23, 34, 45], [9, 1, 2, 4])
-
+    assert_equal [21,24,36,49],
+    e.get_rotation("12345", [9, 1, 2, 4])
   end
 
   def test_if_it_can_a_random_number
-      e = Enigma.new
+    e = Enigma.new
 
-      random = e.get_random
-      #there's a tiny possibility that random_test might fail
-      refute_equal random, e.get_random
+    random = e.get_random
+    #there's a tiny possibility that random_test might fail
+    refute_equal random, e.get_random
   end
+
 
   def test_if_it_can_get_a_date_today
     e = Enigma.new
     date = Date.today
+        #the espected value have to be ajusted acording
+        # of the current date
+      assert_equal 270818, e.get_date(date)
+  end
 
-    assert_equal 82618, e.get_date(date)
+  def test_if_it_can_square_the_date_get_the_last_for_numbers
+    e = Enigma.new
+    date = Date.today
+
+    assert_equal 9124, e.get_last_numbers(date)
   end
 
 end
