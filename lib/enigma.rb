@@ -45,7 +45,6 @@ attr_reader :dictionary,
      "7",
      "8",
      "9",
-     "0",
      " ",
      ".",
      ","
@@ -53,7 +52,7 @@ attr_reader :dictionary,
     @offset     = []
   end
 
-  def get_offset(string, date)
+  def get_rotation(string, date)
     key = []
     4.times do |number|
       key << (string[number] + string[number + 1]).to_i

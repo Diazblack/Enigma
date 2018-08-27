@@ -57,7 +57,6 @@ class EnigmaTest < Minitest::Test
       "7",
       "8",
       "9",
-      "0",
       " ",
       ".",
       ","
@@ -66,11 +65,11 @@ class EnigmaTest < Minitest::Test
     assert_equal [], e.offset
   end
 
-  def test_if_it_can_get_offset_with_string_and_date
+  def test_if_it_can_get_rotation_with_string_and_date
     e = Enigma.new
 
     assert_equal [21,24,36,49],
-    e.get_offset("12345", [9, 1, 2, 4])
+    e.get_rotation("12345", [9, 1, 2, 4])
   end
 
   def test_if_it_can_a_random_number
@@ -85,10 +84,9 @@ class EnigmaTest < Minitest::Test
   def test_if_it_can_get_a_date_today
     e = Enigma.new
     date = Date.today
-
-    #the espected value have to be ajusted acording
-    # of the current date
-    assert_equal 270818, e.get_date(date)
+        #the espected value have to be ajusted acording
+        # of the current date
+      assert_equal 270818, e.get_date(date)
   end
 
   def test_if_it_can_square_the_date_get_the_last_for_numbers
