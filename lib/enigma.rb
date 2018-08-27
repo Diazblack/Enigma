@@ -87,7 +87,7 @@ attr_reader :dictionary
       end.join.to_i
   end
 
-  def encrypt(my_message, key, date)
+  def encrypt_letter(my_message, key, date)
     letter_position = @dictionary.index(my_message)
     last_four = get_last_numbers(date)
     offset = get_rotation(key, last_four)
@@ -101,19 +101,27 @@ attr_reader :dictionary
     end
   end
 
-  def rotate_word(word, key, date )
-    last_four = get_last_numbers(date)
-    offset = get_rotation(key, last_four)
+  def rotate_word(words, offset)
     new_rotation = []
-    index = 0
-    word.each_char do |word|
-      # binding.pry
-      new_rotation << @dictionary.index(word).to_i + offset[index]
-      index +=1
+    counter = 0
+    words.each_char do |word|
+      sum  = @dictionary.index(word) + offset[counter]
+      new_rotation << sum
+      counter += 1
+      # # binding.pry
+      if counter > 3
+          counter = 0
+      end
     end
-    index = 0
     new_rotation
   end
+
+  def encrypt(my_message, key, date)
+
+
+
+  end
+
 
 end
 

@@ -99,17 +99,22 @@ class EnigmaTest < Minitest::Test
     e = Enigma.new
     date = Date.today
 
-    assert_equal "b", e.encrypt("t", "12345", date )
+    assert_equal "b", e.encrypt_letter("t", "12345", date )
   end
 
   def test_if_can_rotate_word
     e = Enigma.new
     date = Date.today
 
-
-    assert_equal [40,31,44,67], e.rotate_word("this", "12345", date )
+    assert_equal [40,31,44,67,21], e.rotate_word("thisa",[21,24,36,49,9])
   end
-  
 
+  def test_if_it_can_encrypt_a_word
+    skip
+    e = Enigma.new
+    date = Date.today
+
+    assert_equal "b5f2", e.encrypt("this", "12345", date )
+  end
 
 end
