@@ -62,7 +62,6 @@ class EnigmaTest < Minitest::Test
       ","
       ]
     assert_equal expected, e.dictionary
-    assert_equal [], e.offset
   end
 
   def test_if_it_can_get_rotation_with_string_and_date
@@ -93,7 +92,14 @@ class EnigmaTest < Minitest::Test
     e = Enigma.new
     date = Date.today
 
-    assert_equal 9124, e.get_last_numbers(date)
+    assert_equal [9,1,2,4], e.get_last_numbers(date)
+  end
+
+  def test_if_it_can_encrypt_one_letter
+    e = Enigma.new
+    date = Date.today
+
+    assert_equal "b", e.encrypt("t", "12345", date )
   end
 
 end
