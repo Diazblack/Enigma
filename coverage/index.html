@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-08-26T15:39:58-06:00">2018-08-26T15:39:58-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-08-27T10:13:03-06:00">2018-08-27T10:13:03-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.9
+         2.2
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>1</b> files in total.
-    <b>21</b> relevant lines. 
-    <span class="green"><b>21</b> lines covered</span> and
+    <b>24</b> relevant lines. 
+    <span class="green"><b>24</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -53,11 +53,11 @@
       <tr>
         <td class="strong"><a href="#8fd1d4ed51ee51a544bff2fa80c0388dff08987b" class="src_link" title="lib/enigma.rb">lib/enigma.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>79</td>
-        <td>21</td>
-        <td>21</td>
+        <td>84</td>
+        <td>24</td>
+        <td>24</td>
         <td>0</td>
-        <td>1.9</td>
+        <td>2.2</td>
       </tr>
       
     </tbody>
@@ -81,8 +81,8 @@
     <h3>lib/enigma.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>21</b> relevant lines. 
-      <span class="green"><b>21</b> lines covered</span> and
+      <b>24</b> relevant lines. 
+      <span class="green"><b>24</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -150,8 +150,8 @@
           <code class="ruby">  def initialize</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="11">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="6" data-linenumber="11">
+          <span class="hits">6</span>
           
           <code class="ruby">    @dictionary =[</code>
         </li>
@@ -402,8 +402,8 @@
           <code class="ruby">    ]</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="53">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="6" data-linenumber="53">
+          <span class="hits">6</span>
           
           <code class="ruby">    @offset     = []</code>
         </li>
@@ -501,64 +501,94 @@
         <li class="covered" data-hits="1" data-linenumber="69">
           <span class="hits">1</span>
           
-          <code class="ruby">  def get_date(date)</code>
+          <code class="ruby">  def get_last_numbers(date)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="70">
           <span class="hits">1</span>
           
-          <code class="ruby">    date_array = date.strftime(&quot;%m/%d/%Y&quot;).split(&quot;/&quot;)</code>
+          <code class="ruby">    last_numbers = (get_date(date) ** 2).to_s</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="71">
-          
-          
-          <code class="ruby">      date_array.map do |date|</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="72">
-          <span class="hits">3</span>
-          
-          <code class="ruby">        if date.length &gt; 2</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="73">
+        <li class="covered" data-hits="1" data-linenumber="71">
           <span class="hits">1</span>
           
-          <code class="ruby">          date[-2..-1]</code>
+          <code class="ruby">    last_numbers[-4..-1].to_i</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="74">
-          
-          
-          <code class="ruby">        else</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="75">
-          <span class="hits">2</span>
-          
-          <code class="ruby">          date</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="76">
-          
-          
-          <code class="ruby">        end</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="77">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      end.join.to_i</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="78">
+        <li class="never" data-hits="" data-linenumber="72">
           
           
           <code class="ruby">  end</code>
         </li>
       
+        <li class="never" data-hits="" data-linenumber="73">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="74">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def get_date(date)</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="75">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    date_array = date.strftime(&quot;%d/%m/%Y&quot;).split(&quot;/&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="76">
+          
+          
+          <code class="ruby">      date_array.map do |date|</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="77">
+          <span class="hits">6</span>
+          
+          <code class="ruby">        if date.length &gt; 2</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="78">
+          <span class="hits">2</span>
+          
+          <code class="ruby">          date[-2..-1]</code>
+        </li>
+      
         <li class="never" data-hits="" data-linenumber="79">
+          
+          
+          <code class="ruby">        else</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="80">
+          <span class="hits">4</span>
+          
+          <code class="ruby">          date</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="81">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="82">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      end.join.to_i</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="83">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="84">
           
           
           <code class="ruby">end</code>

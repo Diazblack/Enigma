@@ -86,7 +86,16 @@ class EnigmaTest < Minitest::Test
     e = Enigma.new
     date = Date.today
 
-    assert_equal 82618, e.get_date(date)
+    #the espected value have to be ajusted acording
+    # of the current date
+    assert_equal 270818, e.get_date(date)
+  end
+
+  def test_if_it_can_square_the_date_get_the_last_for_numbers
+    e = Enigma.new
+    date = Date.today
+
+    assert_equal 9124, e.get_last_numbers(date)
   end
 
 end

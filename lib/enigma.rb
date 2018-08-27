@@ -66,8 +66,13 @@ attr_reader :dictionary,
     rand(99999)
   end
 
+  def get_last_numbers(date)
+    last_numbers = (get_date(date) ** 2).to_s
+    last_numbers[-4..-1].to_i
+  end
+
   def get_date(date)
-    date_array = date.strftime("%m/%d/%Y").split("/")
+    date_array = date.strftime("%d/%m/%Y").split("/")
       date_array.map do |date|
         if date.length > 2
           date[-2..-1]
