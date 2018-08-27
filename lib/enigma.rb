@@ -9,6 +9,7 @@ class Enigma
 attr_reader :dictionary
 
   def initialize
+
     @dictionary =[
      "a",
      "b",
@@ -98,13 +99,23 @@ attr_reader :dictionary
     else
       @dictionary[new_position]
     end
-
-
   end
 
+  def rotate_word(word, key, date )
+    last_four = get_last_numbers(date)
+    offset = get_rotation(key, last_four)
+    new_rotation = []
+    index = 0
+    word.each_char do |word|
+      # binding.pry
+      new_rotation << @dictionary.index(word).to_i + offset[index]
+      index +=1
+    end
+    index = 0
+    new_rotation
+  end
 
-
-
+end
 
 
 
@@ -150,6 +161,3 @@ attr_reader :dictionary
     #     # 1. iterate over decrypted_array_numbers
     #     # 2. each number -> letter
     #     # 3. letters array -> string
-
-
-end

@@ -102,4 +102,14 @@ class EnigmaTest < Minitest::Test
     assert_equal "b", e.encrypt("t", "12345", date )
   end
 
+  def test_if_can_rotate_word
+    e = Enigma.new
+    date = Date.today
+
+
+    assert_equal [40,31,44,67], e.rotate_word("this", "12345", date )
+  end
+  
+
+
 end
