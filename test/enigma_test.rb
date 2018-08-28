@@ -1,11 +1,6 @@
-require 'simplecov'
-SimpleCov.start
-
-# Previous content of test helper now starts here
-
-
 require 'minitest/autorun'
 require 'minitest/pride'
+require './test/minitest_helper.rb'
 require './lib/enigma.rb'
 require 'date'
 require 'pry'

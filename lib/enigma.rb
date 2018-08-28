@@ -1,6 +1,3 @@
-require 'simplecov'
-SimpleCov.start
-
 class Enigma
 attr_reader :dictionary
 
