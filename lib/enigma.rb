@@ -92,7 +92,6 @@ attr_reader :dictionary
     last_four = get_last_numbers(date)
     offset = get_rotation(key, last_four)
     new_position = letter_position + offset[0]
-    # binding.pry
     if new_position > 39
       position = new_position - 39
       @dictionary[position]
@@ -101,62 +100,40 @@ attr_reader :dictionary
     end
   end
 
-  def rotate_word(words, offset)
+  def rotate_word(word, offset)
     new_rotation = []
-    counter = 0
-    words.each_char do |word|
-      sum  = @dictionary.index(word) + offset[counter]
-      new_rotation << sum
-      counter += 1
-      # # binding.pry
-      if counter > 3
-          counter = 0
+    word.each_char.with_index do |letter, i|
+      sum  = @dictionary.index(letter) + offset[i]
+      if sum > @dictionary.count
+        overflow = sum - @dictionary.count
+        new_rotation << overflow
+      else
+        new_rotation << sum
       end
     end
     new_rotation
   end
 
   def encrypt(my_message, key, date)
-
-
-
+    last_four = get_last_numbers(date)
+    offset = get_rotation(key, last_four)
+    encrypt =""
+    my_message.each_char.with_index do |letter, i|
+      sum  = @dictionary.index(letter) + offset[i % 4]
+      if sum > @dictionary.count
+        overflow = sum - @dictionary.count
+        encrypt += @dictionary[overflow - 1]
+      else
+        encrypt += @dictionary[sum - 1]
+      end
+    end
+    encrypt
   end
 
 
 end
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  # def get_positions(message)
-    #   # letters = message.split("")
-    #   # 1. iterate over each letter in letters
-    #   # 2. make empty positions array
-    #   # 3. dictionary[letter]; store this in positions(array)
-    # end
-    #
-    # def normalize_positions(array_of_positions)
-    #   # 1. iterate over get_positions
-    #   # 2. loop:
-    #   # 3. while number > 39, subtract 39
-    # end
     #
     #  def encrypt(message, key, date)
     #   offset = get_offset(key)
@@ -165,6 +142,10 @@ end
     #   (length_of_postions 4).times do |number|
     #     decrypted_array_numbers << offset[number] + letter_position[number]
     #   end
+
+
+
+
     #     decrypted_array_numbers
     #     # 1. iterate over decrypted_array_numbers
     #     # 2. each number -> letter
