@@ -98,14 +98,15 @@ attr_reader :dictionary
     encrypt
   end
 
-  def reverse_letter(sum)
-    diference = @dictionary.count + 1
-    # number = sum / @dictionary.count
-    overflow =  sum + @dictionary.count 
-    @dictionary[overflow]
-  end
+  def decrypt(my_message, key, date)
+    offset = get_rotation(key, get_last_numbers(date))
+    encrypt =""
 
-  # def decrypt(my_message, key, date)
-  #
-  # end
+    my_message.each_char.with_index do |letter, i|
+      sum  = @dictionary.index(letter) - offset[i % 4]
+      encrypt += get_letter(sum)
+    end
+    encrypt
+
+  end
 end

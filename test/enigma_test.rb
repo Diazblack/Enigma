@@ -102,19 +102,13 @@ class EnigmaTest < Minitest::Test
     assert_equal "b5f2s6phvvjoad qz", e.encrypt("this is a message", "12345", date )
   end
 
-  def test_if_it_can_get_a_letter_in_reverse
-    e = Enigma.new
-    date = Date.parse('27-8-2018')
-
-    assert_equal "a" , e.reverse_letter(5) #### VALUE =F
-  end
 
   def test_if_it_can_decrypt_a_word
-    skip
+
     e = Enigma.new
     date = Date.parse('27-8-2018')
 
-    assert_equal "thisa", e.decrypt( "b5f2v", "12345", date )
+    assert_equal "this is a message", e.decrypt( "b5f2s6phvvjoad qz", "12345", date )
   end
 
 end
