@@ -1,4 +1,6 @@
 require 'simplecov'
 SimpleCov.start
 
-# Previous content of test helper now starts here
+require 'minitest/autorun'
+require 'minitest/pride'
+require 'pry'
