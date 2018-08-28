@@ -72,7 +72,6 @@ class EnigmaTest < Minitest::Test
     refute_equal random, e.get_random
   end
 
-
   def test_if_it_can_get_a_date_today
     e = Enigma.new
     date = Date.parse('27-8-2018')
@@ -88,25 +87,28 @@ class EnigmaTest < Minitest::Test
     assert_equal [9,1,2,4], e.get_last_numbers(date)
   end
 
-  def test_if_it_can_encrypt_one_letter
+  def test_if_it_can_get_the_posicion_a_letter_with_a_position_greater_than_78
     e = Enigma.new
     date = Date.parse('27-8-2018')
 
-    assert_equal "b", e.encrypt_letter("t", "12345", date )
-  end
-
-  def test_if_can_rotate_word
-    e = Enigma.new
-    date = Date.parse('27-8-2018')
-
-    assert_equal [1,31,5,28,9], e.rotate_word("thisa",[21,24,36,49,9])
+    assert_equal "b" , e.get_letter(79)
   end
 
   def test_if_it_can_encrypt_a_word
+
     e = Enigma.new
     date = Date.parse('27-8-2018')
 
-    assert_equal "a4e1u", e.encrypt("thisa", "12345", date )
+    assert_equal "b5f2s6phvvjoad qz", e.encrypt("this is a message", "12345", date )
+  end
+
+
+  def test_if_it_can_decrypt_a_word
+
+    e = Enigma.new
+    date = Date.parse('27-8-2018')
+
+    assert_equal "this is a message", e.decrypt( "b5f2s6phvvjoad qz", "12345", date )
   end
 
 end
