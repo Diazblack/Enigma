@@ -1,9 +1,7 @@
-require 'minitest/autorun'
-require 'minitest/pride'
 require './test/minitest_helper.rb'
 require './lib/enigma.rb'
 require 'date'
-require 'pry'
+
 class EnigmaTest < Minitest::Test
 
   def test_if_it_exists
