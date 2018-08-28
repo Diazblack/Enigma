@@ -1,15 +1,10 @@
 require 'simplecov'
 SimpleCov.start
 
-# Previous content of test helper now starts here
-require 'pry'
-
-
 class Enigma
 attr_reader :dictionary
 
   def initialize
-
     @dictionary =[
      "a",
      "b",
@@ -66,7 +61,6 @@ attr_reader :dictionary
   end
 
   def get_last_numbers(date)
-
     last_numbers = (get_date(date) ** 2).to_s
     last = last_numbers[-4..-1]
     last_four = []
@@ -119,39 +113,22 @@ attr_reader :dictionary
     end
   end
 
+  def get_letter(encrypt, sum)
+    if sum > @dictionary.count
+      overflow = sum - @dictionary.count
+      encrypt + @dictionary[overflow - 1]
+    else
+      encrypt + @dictionary[sum - 1]
+    end
+  end
+
   def encrypt(my_message, key, date)
-    last_four = get_last_numbers(date)
-    offset = get_rotation(key, last_four)
+    offset = get_rotation(key, get_last_numbers(date))
     encrypt =""
     my_message.each_char.with_index do |letter, i|
       sum  = @dictionary.index(letter) + offset[i % 4]
-      if sum > @dictionary.count
-        overflow = sum - @dictionary.count
-        encrypt += @dictionary[overflow - 1]
-      else
-        encrypt += @dictionary[sum - 1]
-      end
+      encrypt = get_letter(encrypt, sum)
     end
     encrypt
   end
-
-
 end
-
-
-    #
-    #  def encrypt(message, key, date)
-    #   offset = get_offset(key)
-    #   raw_positions = get_positions(message)
-    #   letter_positions = normalize_positions(raw_positions)
-    #   (length_of_postions 4).times do |number|
-    #     decrypted_array_numbers << offset[number] + letter_position[number]
-    #   end
-
-
-
-
-    #     decrypted_array_numbers
-    #     # 1. iterate over decrypted_array_numbers
-    #     # 2. each number -> letter
-    #     # 3. letters array -> string
