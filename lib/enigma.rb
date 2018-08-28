@@ -100,18 +100,23 @@ attr_reader :dictionary
     end
   end
 
-  def rotate_word(word, offset)
-    new_rotation = []
-    word.each_char.with_index do |letter, i|
-      sum  = @dictionary.index(letter) + offset[i]
-      if sum > @dictionary.count
-        overflow = sum - @dictionary.count
-        new_rotation << overflow
-      else
-        new_rotation << sum
-      end
+  def get_new_position(original_position, offset)
+    original_position + offset
+  end
+
+  def save_new_position(new_position)
+    if new_position > @dictionary.count
+      new_position - @dictionary.count
+    else
+      new_position
     end
-    new_rotation
+  end
+
+  def rotate_word(word, offset)
+    word.chars.map.with_index do |letter, i|
+      new_position = get_new_position(@dictionary.index(letter), offset[i])
+      save_new_position(new_position)
+    end
   end
 
   def encrypt(my_message, key, date)
