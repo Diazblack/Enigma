@@ -47,6 +47,7 @@ attr_reader :dictionary
 
   def get_rotation(string, date)
     key = []
+
     4.times do |number|
       key << ((string[number] + string[number + 1]).to_i+ date[number])
     end
@@ -59,6 +60,7 @@ attr_reader :dictionary
 
   def get_date(date)
     date_array = date.strftime("%d/%m/%Y").split("/")
+
       date_array.map do |date|
         if date.length > 2
           date[-2..-1]
@@ -72,37 +74,22 @@ attr_reader :dictionary
     last_numbers = (get_date(date) ** 2).to_s
     last = last_numbers[-4..-1]
     last_four = []
+    
     last.each_char do |char|
       last_four << char.to_i
     end
     last_four
   end
 
-  def encrypt_letter(my_message, key, date)
-    letter_position = @dictionary.index(my_message)
-    last_four = get_last_numbers(date)
-    offset = get_rotation(key, last_four)
-    new_position = letter_position + offset[0]
-    if new_position > 39
-      position = new_position - 39
-      @dictionary[position]
-    else
-      @dictionary[new_position]
-    end
-  end
-  ##
   def get_new_position(original_position, offset)
-
     original_position + offset
   end
-##
-  def save_new_position(new_position)
-    dic_lenght = @dictionary.count
 
-    if new_position >= dic_lenght && new_position < dic_lenght * 2
-      new_position - dic_lenght
-    elsif new_position > dic_lenght * 2
-        new_position - dic_lenght * 2
+  def save_new_position(new_position)
+    if new_position >= @dictionary.count && new_position < @dictionary.count * 2
+      new_position - @dictionary.count
+    elsif new_position > @dictionary.count * 2
+        new_position - @dictionary.count * 2
     else
       new_position
     end
@@ -127,6 +114,7 @@ attr_reader :dictionary
   def encrypt(my_message, key, date)
     offset = get_rotation(key, get_last_numbers(date))
     encrypt =""
+
     my_message.each_char.with_index do |letter, i|
       sum  = @dictionary.index(letter) + offset[i % 4]
       encrypt = get_letter(encrypt, sum)
