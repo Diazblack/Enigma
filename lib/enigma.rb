@@ -57,16 +57,6 @@ attr_reader :dictionary
     rand(99999)
   end
 
-  def get_last_numbers(date)
-    last_numbers = (get_date(date) ** 2).to_s
-    last = last_numbers[-4..-1]
-    last_four = []
-    last.each_char do |char|
-      last_four << char.to_i
-    end
-    last_four
-  end
-
   def get_date(date)
     date_array = date.strftime("%d/%m/%Y").split("/")
       date_array.map do |date|
@@ -75,7 +65,17 @@ attr_reader :dictionary
         else
           date
         end
-      end.join.to_i
+    end.join.to_i
+  end
+
+  def get_last_numbers(date)
+    last_numbers = (get_date(date) ** 2).to_s
+    last = last_numbers[-4..-1]
+    last_four = []
+    last.each_char do |char|
+      last_four << char.to_i
+    end
+    last_four
   end
 
   def encrypt_letter(my_message, key, date)
@@ -90,14 +90,19 @@ attr_reader :dictionary
       @dictionary[new_position]
     end
   end
-
+  ##
   def get_new_position(original_position, offset)
+
     original_position + offset
   end
-
+##
   def save_new_position(new_position)
-    if new_position > @dictionary.count
-      new_position - @dictionary.count
+    dic_lenght = @dictionary.count
+
+    if new_position >= dic_lenght && new_position < dic_lenght * 2
+      new_position - dic_lenght
+    elsif new_position > dic_lenght * 2
+        new_position - dic_lenght * 2
     else
       new_position
     end
@@ -128,4 +133,14 @@ attr_reader :dictionary
     end
     encrypt
   end
+
+  # def decrypt(my_message, key, date)
+  #   offset = get_rotation(key, get_last_numbers(date))
+  #   decrypt =""
+  #   my_message.each_char.with_index do |letter, i|
+  #     sum  = @dictionary.index(letter) + offset[i % 4]
+  #     decrypt = get_letter(decrypt, sum)
+  #   end
+  #   decrypt
+  # end
 end

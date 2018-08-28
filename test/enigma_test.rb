@@ -94,6 +94,13 @@ class EnigmaTest < Minitest::Test
 
     assert_equal "b", e.encrypt_letter("t", "12345", date )
   end
+  
+  def test_if_it_can_get_the_posicion_a_number_greater_them_78
+    e = Enigma.new
+    date = Date.parse('27-8-2018')
+
+    assert_equal 1 , e.save_new_position(79)
+  end
 
   def test_if_can_rotate_word
     e = Enigma.new
@@ -107,6 +114,14 @@ class EnigmaTest < Minitest::Test
     date = Date.parse('27-8-2018')
 
     assert_equal "a4e1u", e.encrypt("thisa", "12345", date )
+  end
+
+  def test_if_it_can_decrypt_a_word
+    skip
+    e = Enigma.new
+    date = Date.parse('27-8-2018')
+
+    assert_equal "thisa", e.decrypt( "a4e1u", "12345", date )
   end
 
 end
