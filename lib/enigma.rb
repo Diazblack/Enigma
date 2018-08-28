@@ -74,61 +74,38 @@ attr_reader :dictionary
     last_numbers = (get_date(date) ** 2).to_s
     last = last_numbers[-4..-1]
     last_four = []
-    
+
     last.each_char do |char|
       last_four << char.to_i
     end
     last_four
   end
 
-  def get_new_position(original_position, offset)
-    original_position + offset
+  def get_letter(sum)
+    number = sum / @dictionary.count
+    overflow = sum - @dictionary.count * number
+    @dictionary[overflow]
   end
 
-  def save_new_position(new_position)
-    if new_position >= @dictionary.count && new_position < @dictionary.count * 2
-      new_position - @dictionary.count
-    elsif new_position > @dictionary.count * 2
-        new_position - @dictionary.count * 2
-    else
-      new_position
-    end
-  end
-
-  def rotate_word(word, offset)
-    word.chars.map.with_index do |letter, i|
-      new_position = get_new_position(@dictionary.index(letter), offset[i])
-      save_new_position(new_position)
-    end
-  end
-
-  def get_letter(encrypt, sum)
-    if sum > @dictionary.count
-      overflow = sum - @dictionary.count
-      encrypt + @dictionary[overflow - 1]
-    else
-      encrypt + @dictionary[sum - 1]
-    end
-  end
-
-  def encrypt(my_message, key, date)
+  def encrypt(my_message, key = get_random, date = Date.today)
     offset = get_rotation(key, get_last_numbers(date))
     encrypt =""
 
     my_message.each_char.with_index do |letter, i|
       sum  = @dictionary.index(letter) + offset[i % 4]
-      encrypt = get_letter(encrypt, sum)
+      encrypt += get_letter(sum)
     end
     encrypt
   end
 
+  def reverse_letter(sum)
+    diference = @dictionary.count + 1
+    # number = sum / @dictionary.count
+    overflow =  sum + @dictionary.count 
+    @dictionary[overflow]
+  end
+
   # def decrypt(my_message, key, date)
-  #   offset = get_rotation(key, get_last_numbers(date))
-  #   decrypt =""
-  #   my_message.each_char.with_index do |letter, i|
-  #     sum  = @dictionary.index(letter) + offset[i % 4]
-  #     decrypt = get_letter(decrypt, sum)
-  #   end
-  #   decrypt
+  #
   # end
 end
