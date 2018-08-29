@@ -1,5 +1,4 @@
 require './test/minitest_helper.rb'
-require './lib/key.rb'
 require './lib/enigma.rb'
 require './lib/get_date.rb'
 require 'date'
@@ -57,6 +56,13 @@ class EnigmaTest < Minitest::Test
       ","
       ]
     assert_equal expected, e.dictionary
+  end
+
+  def test_if_get_date_receive_arguments
+    e = Enigma.new
+    date = Date.parse('27-8-2018')
+
+    assert_equal 270818, e.get_date(date)
   end
 
   def test_if_it_can_square_the_date_get_the_last_for_numbers
