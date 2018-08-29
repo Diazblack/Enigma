@@ -73,14 +73,6 @@ class EnigmaTest < Minitest::Test
     refute_equal random, e.get_random
   end
 
-  def test_if_it_can_get_a_date
-    e = Enigma.new
-    date = Date.parse('27-8-2018')
-        #the espected value have to be ajusted acording
-        # of the current date
-      assert_equal 270818, e.get_date(date)
-  end
-
   def test_if_it_can_square_the_date_get_the_last_for_numbers
     e = Enigma.new
     date = Date.parse('27-8-2018')
