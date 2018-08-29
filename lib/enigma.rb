@@ -1,9 +1,12 @@
+
+require './lib/key.rb'
 require './lib/get_date'
 
 class Enigma
 attr_reader :dictionary
+            :key
 
-  def initialize
+  def initialize (key = KeyGenerator.new)
     @dictionary =[
      "a",
      "b",
@@ -45,19 +48,8 @@ attr_reader :dictionary
      ".",
      ","
     ]
-  end
+    @key        = key
 
-  def get_rotation(string, date)
-    key = []
-
-    4.times do |number|
-      key << ((string[number] + string[number + 1]).to_i+ date[number])
-    end
-    key
-  end
-
-  def get_random
-    rand(99999)
   end
 
   def get_last_numbers(date)
@@ -72,7 +64,7 @@ attr_reader :dictionary
   end
 
   def encrypt(my_message, key = get_random, date = Date.today)
-    offset = get_rotation(key, get_last_numbers(date))
+    offset = @key.get_rotation(key, get_last_numbers(date))
     encrypt =""
 
     my_message.each_char.with_index do |letter, i|
@@ -83,7 +75,7 @@ attr_reader :dictionary
   end
 
   def decrypt(my_message, key, date)
-    offset = get_rotation(key, get_last_numbers(date))
+    offset = @key.get_rotation(key, get_last_numbers(date))
     encrypt =""
 
     my_message.each_char.with_index do |letter, i|

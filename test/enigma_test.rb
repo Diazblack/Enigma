@@ -1,4 +1,5 @@
 require './test/minitest_helper.rb'
+require './lib/key.rb'
 require './lib/enigma.rb'
 require './lib/get_date.rb'
 require 'date'
@@ -56,21 +57,6 @@ class EnigmaTest < Minitest::Test
       ","
       ]
     assert_equal expected, e.dictionary
-  end
-
-  def test_if_it_can_get_rotation_with_string_and_date
-    e = Enigma.new
-
-    assert_equal [21,24,36,49],
-    e.get_rotation("12345", [9, 1, 2, 4])
-  end
-
-  def test_if_it_can_a_random_number
-    e = Enigma.new
-
-    random = e.get_random
-    #there's a tiny possibility that random_test might fail
-    refute_equal random, e.get_random
   end
 
   def test_if_it_can_square_the_date_get_the_last_for_numbers
