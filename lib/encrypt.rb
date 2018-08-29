@@ -1,7 +1,7 @@
 require './lib/enigma.rb'
 require 'date'
 require 'pry'
-# don't forget to create the class encrypt
+
 encrypt_1 = File.open(ARGV[0], "r")
 text = encrypt_1.read
 
