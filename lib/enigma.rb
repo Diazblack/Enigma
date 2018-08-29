@@ -107,6 +107,5 @@ attr_reader :dictionary
       encrypt += get_letter(sum)
     end
     encrypt
-
   end
 end
