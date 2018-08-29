@@ -1,5 +1,6 @@
 require './test/minitest_helper.rb'
 require './lib/enigma.rb'
+require './lib/get_date.rb'
 require 'date'
 
 class EnigmaTest < Minitest::Test
@@ -72,7 +73,7 @@ class EnigmaTest < Minitest::Test
     refute_equal random, e.get_random
   end
 
-  def test_if_it_can_get_a_date_today
+  def test_if_it_can_get_a_date
     e = Enigma.new
     date = Date.parse('27-8-2018')
         #the espected value have to be ajusted acording

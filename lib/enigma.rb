@@ -1,3 +1,5 @@
+require './lib/get_date'
+
 class Enigma
 attr_reader :dictionary
 
@@ -54,20 +56,13 @@ attr_reader :dictionary
     key
   end
 
-  def get_random
-    rand(99999)
+  def get_date(date)
+    current_date = GetDate.new(date)
+    current_date.get_date
   end
 
-  def get_date(date)
-    date_array = date.strftime("%d/%m/%Y").split("/")
-
-      date_array.map do |date|
-        if date.length > 2
-          date[-2..-1]
-        else
-          date
-        end
-    end.join.to_i
+  def get_random
+    rand(99999)
   end
 
   def get_last_numbers(date)
