@@ -52,6 +52,11 @@ attr_reader :dictionary
 
   end
 
+  def get_date(date)
+    current_day = GetDate.new(date)
+    current_day.get_date
+  end
+  
   def get_last_numbers(date)
     current_day = GetDate.new(date)
     current_day.get_last_numbers
