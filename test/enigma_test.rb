@@ -1,6 +1,7 @@
 require './test/minitest_helper.rb'
 require './lib/key.rb'
 require './lib/enigma.rb'
+require './lib/get_date.rb'
 require 'date'
 
 class EnigmaTest < Minitest::Test
@@ -58,14 +59,6 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, e.dictionary
   end
 
-  def test_if_it_can_get_a_date_today
-    e = Enigma.new
-    date = Date.parse('27-8-2018')
-        #the espected value have to be ajusted acording
-        # of the current date
-      assert_equal 270818, e.get_date(date)
-  end
-
   def test_if_it_can_square_the_date_get_the_last_for_numbers
     e = Enigma.new
     date = Date.parse('27-8-2018')
@@ -87,7 +80,6 @@ class EnigmaTest < Minitest::Test
 
     assert_equal "b5f2s6phvvjoad qz", e.encrypt("this is a message", "12345", date )
   end
-
 
   def test_if_it_can_decrypt_a_word
 

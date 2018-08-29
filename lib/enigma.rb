@@ -1,11 +1,10 @@
-require './lib/key.rb'
 
+require './lib/key.rb'
+require './lib/get_date'
 
 class Enigma
 attr_reader :dictionary
             :key
-
-
 
   def initialize (key = KeyGenerator.new)
     @dictionary =[
@@ -53,27 +52,9 @@ attr_reader :dictionary
 
   end
 
-  def get_date(date)
-    date_array = date.strftime("%d/%m/%Y").split("/")
-
-      date_array.map do |date|
-        if date.length > 2
-          date[-2..-1]
-        else
-          date
-        end
-    end.join.to_i
-  end
-
   def get_last_numbers(date)
-    last_numbers = (get_date(date) ** 2).to_s
-    last = last_numbers[-4..-1]
-    last_four = []
-
-    last.each_char do |char|
-      last_four << char.to_i
-    end
-    last_four
+    current_day = GetDate.new(date)
+    current_day.get_last_numbers
   end
 
   def get_letter(sum)
