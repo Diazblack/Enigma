@@ -102,7 +102,6 @@ class EnigmaTest < Minitest::Test
     assert_equal "b5f2s6phvvjoad qz", e.encrypt("this is a message", "12345", date )
   end
 
-
   def test_if_it_can_decrypt_a_word
 
     e = Enigma.new
