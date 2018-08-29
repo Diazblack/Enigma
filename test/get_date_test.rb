@@ -32,6 +32,13 @@ class GetDateTest < Minitest::Test
     today_date = GetDate.new(day)
 
     assert_equal 290818, today_date.get_date(day)
-  end 
+  end
+
+  def test_if_it_can_square_the_date_get_the_last_for_numbers
+    day = Date.parse('27-8-2018')
+    today_date = GetDate.new(day)
+
+    assert_equal [9,1,2,4], today_date.get_last_numbers
+  end
 
 end

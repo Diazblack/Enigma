@@ -56,24 +56,13 @@ attr_reader :dictionary
     key
   end
 
-  def get_date(date)
-    current_date = GetDate.new(date)
-    current_date.get_date
-  end
-
   def get_random
     rand(99999)
   end
 
   def get_last_numbers(date)
-    last_numbers = (get_date(date) ** 2).to_s
-    last = last_numbers[-4..-1]
-    last_four = []
-
-    last.each_char do |char|
-      last_four << char.to_i
-    end
-    last_four
+    current_day = GetDate.new(date)
+    current_day.get_last_numbers
   end
 
   def get_letter(sum)

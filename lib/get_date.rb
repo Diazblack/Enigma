@@ -19,4 +19,14 @@ class GetDate
     end.join.to_i
   end
 
+  def get_last_numbers
+    last_numbers = (get_date ** 2).to_s
+    last = last_numbers[-4..-1]
+    last_four = []
+
+    last.each_char do |char|
+      last_four << char.to_i
+    end
+      last_four
+    end
 end
